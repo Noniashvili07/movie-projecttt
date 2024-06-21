@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}
+    Student Flask App with CRUD
+{% endblock %}
+{% block content %}
+<h1>HI-Cinephile Noni Here</h1>
+<br>
+<div class="container-xl">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sidebar">
+                <!-- Sidebar content -->
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">Genre</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    {% for g in genres %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('genre', genre=g) }}" class="nav-link {% if g == active_genre %}active{% endif %} link-dark">
+                            {{ g }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="content">
+                <!-- Image container -->
+                <div class="row">
+                    <div class="col-md-6 offset-md-3"> <!-- Adjust width and offset as needed -->
+                        <div class="img-container">
+                            <img src="{{ url_for('static', filename=image_file) }}" class="img-fluid rounded" alt="{{ active_genre }}" style="max-width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional content here if needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
